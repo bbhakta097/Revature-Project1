@@ -36,7 +36,7 @@ public class JwtService {
         } catch (Exception e) {
             return "generate Token didnt work!";
         }
-        
+
     }
 
     public String generateToken(Map<String, Object> extractClaims, UserDetails userDetails) {

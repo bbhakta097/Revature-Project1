@@ -1,7 +1,6 @@
 package com.socialnetwork.social_network.Service;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,7 +14,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 
-import com.socialnetwork.social_network.DTO.UserConnDto;
 import com.socialnetwork.social_network.Model.Connection;
 import com.socialnetwork.social_network.Model.User;
 import com.socialnetwork.social_network.Repository.ConnRepo;
@@ -70,9 +68,9 @@ class ConnServiceTest {
         when(connectionRepository.findAllByConnectedUserId(2L)).thenReturn(Arrays.asList(mockConnection));
         when(userRepository.findById(1L)).thenReturn(Optional.of(mockUser));
 
-        List<UserConnDto> result = connService.getFollowers(2L);
+        Long result = connService.getFollowers(2L);
 
-        assertEquals(1, result.size());
-        assertEquals("testUser", result.get(0).getUsername());
+        assertEquals(1, result);
+        assertEquals("testUser", result);
     }
 }

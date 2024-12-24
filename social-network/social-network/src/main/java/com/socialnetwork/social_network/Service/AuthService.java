@@ -38,16 +38,15 @@ public class AuthService {
 
     }
 
-
-    public AuthenticationResponse loginUser(AuthRequest request){
+    public AuthenticationResponse loginUser(AuthRequest request) {
         authManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 
-        User user = userRepository.findByUsername(request.getUsername()).orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userRepository.findByUsername(request.getUsername())
+                .orElseThrow(() -> new RuntimeException("User not found"));
         String jwtToken = jwtService.generateToken(user);
 
         return AuthenticationResponse.builder().token(jwtToken).userId(user.getId()).build();
     }
-        
 
     public void updateUserProfile(Long userId, UserProfileUpdateDto updateDto) {
         User user = userRepository.findById(userId)
@@ -73,6 +72,5 @@ public class AuthService {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
-    
 
 }

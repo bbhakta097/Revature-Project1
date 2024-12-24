@@ -39,7 +39,6 @@ public class Connection {
         FRIENDS
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }

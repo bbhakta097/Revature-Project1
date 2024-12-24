@@ -6,6 +6,7 @@
   font-family: "Quicksand";
   color: #333;
 }
+
 .navbar {
   padding: 20px;
   display: flex;
@@ -14,20 +15,25 @@
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
 }
+
 .navbar h1 {
   color: #f1356d;
 }
+
 .navbar .links {
   margin-left: auto;
 }
+
 .navbar a {
   margin-left: 16px;
   text-decoration: none;
   padding: 6px;
 }
+
 .navbar a:hover {
   color: #f1356d;
 }
+
 .content {
   max-width: 600px;
   margin: 40px auto;
@@ -59,4 +65,487 @@
 .search-result-item {
   padding: 10px;
   border-bottom: 1px solid #ddd;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Styles for the Login Page */
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafafa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  text-align: center;
+  color: #2766c5;
+  margin-bottom: 20px;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-container input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-container input:focus {
+  outline: none;
+  border-color: #2766c5;
+}
+
+.login-container button {
+  background-color: #2766c5;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #2766c5;
+}
+
+.login-container p {
+  text-align: center;
+  color: red;
+  margin-top: 10px;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Styles for the Register Page */
+.register-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.register-container h2 {
+  text-align: center;
+  color: #2766c5;
+  margin-bottom: 20px;
+}
+
+.register-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.register-container input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.register-container input:focus {
+  outline: none;
+  border-color: #2766c5;
+}
+
+.register-container button {
+  background-color: #2766c5;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.register-container button:hover {
+  background-color: #1e4f91;
+}
+
+.register-container .error-text {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}
+
+/*------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Feed Page Styles */
+.feed-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.feed-header {
+  font-size: 24px;
+  color: #2766c5;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.feed-error {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.post-list {
+  margin-top: 20px;
+}
+
+.post-item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.post-item h4 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.post-item p {
+  color: #555;
+}
+
+.post-item small {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #888;
+}
+
+
+/*-------------------------------------------------------------------------------------------------------------------------*/
+/* Search Bar */
+.search-bar-container {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.search-bar-container input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-bar-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2766c5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar-container button:hover {
+  background-color: #1e4f91;
+}
+
+/*----------------------------------------------------------------------------------------------------*/
+
+.post-form {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-textarea {
+  width: 100%;
+  max-width: 600px;
+  min-height: 100px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+.post-submit-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.post-submit-button:hover {
+  background-color: #0056b3;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+.post-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-item h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #333;
+}
+
+.post-item small {
+  color: #666;
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.post-item button {
+  background-color: #2766c5;
+  color: #fff;
+  border: none;
+  padding: 2px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.post-item button:hover {
+  background-color: #14a6e0;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+/*-------------------------------------------------------------------------------------------*/
+.comment-form {
+  margin-bottom: 15px;
+  gap: 5px; 
+  align-items: center; 
+  display:grid;
+}
+
+.comment-form input {
+  flex:1; 
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); 
+}
+
+.comment-form input:focus {
+  outline: none; 
+  border-color: #2766c5; 
+  box-shadow: 0 0 5px rgba(39, 102, 197, 0.5);
+}
+
+.comment-form button {
+  padding: 10x 20px; 
+  font-size: 20px;
+  background-color: #2766c5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease;
+  display:block;
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+
+/* General Container Styles */
+.profile-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Header */
+.profile-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-header h1 {
+  font-size: 28px;
+  color: #333;
+}
+
+.profile-header p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Followers Section */
+.profile-followers {
+  margin: 15px 0;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-followers span{
+  margin-bottom: 10px;
+}
+
+.follow-button,
+.unfollow-button,
+.update-button {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #2766c5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.follow-button:hover,
+.unfollow-button:hover,
+.update-button:hover {
+  background-color: #004c99;
+}
+
+.followers-count {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Edit Profile model */
+.edit-profile-model {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.edit-profile-model input,
+.edit-profile-model textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit-profile-model button {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-profile-model button.save-button {
+  background-color: #4caf50;
+  color: white;
+  
+}
+
+.edit-profile-model button.cancel-button {
+  background-color: #f44336;
+  color: white;
+  margin-left: 10px;
+}
+
+/* User Posts */
+.user-post {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.user-post p {
+  font-size: 14px;
+  color: #444;
+}
+
+.user-post small {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Search Results */
+.search-results-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.search-section {
+  margin-top: 20px;
+}
+
+.user-result,
+.post-result {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-result:hover,
+.post-result:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.user-result button,
+.post-result button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2766c5;
+  color: white;
+  cursor: pointer;
+}
+
+.user-result button:hover,
+.post-result button:hover {
+  background-color: #004c99;
 }

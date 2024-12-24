@@ -27,44 +27,31 @@ const Feed = () => {
 
   const handleAddPost = async (content) => {
     try {
-        const userId = sessionStorage.getItem('userId');
-        if (!userId) {
-            setError('User not logged in.');
-            return;
-        }
-        const response = addPost(content, userId);
-        setPosts([response, ...posts]); // Prepend the new post to the feed
+      const userId = sessionStorage.getItem('userId');
+      if (!userId) {
+        setError('User not logged in.');
+        return;
+      }
+      const response = addPost(content, userId);
+      setPosts([response, ...posts]); // Prepend the new post to the feed
 
-        navigate(0);
-        
+      navigate(0);
+
     } catch (err) {
-        setError('Failed to add post.');
+      setError('Failed to add post.');
     }
   };
 
   return (
-    <div>
-      <h1>Feed</h1>
+    <div className="feed-container">
+      <h1 className="feed-header">Feed</h1>
       <SearchBar />
       <PostForm onAddPost={handleAddPost} />
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <PostList posts={posts} currentUserId={userId}/>
+      {error && <p className="feed-error">{error}</p>}
+      <PostList posts={posts} currentUserId={userId} />
     </div>
   );
 };
 
 export default Feed;
 
-/*<h2>Feed</h2>
-            {posts.length === 0 ? (
-                <p>No posts available</p>
-            ) : (
-                posts.map(post => (
-                    <div key={post.id} style={{ border: '1px solid #ccc', margin: '10px', padding: '10px' }}>
-                        <h4>{post.user.username}</h4>
-                        <p>{post.content}</p>
-                        <small>Created at: {new Date(post.createdAt).toLocaleString()}</small>
-                    </div>
-                ))
-            )}
-        </div>*/

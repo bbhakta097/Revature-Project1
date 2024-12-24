@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.socialnetwork.social_network.DTO.UserConnDto;
@@ -34,7 +33,7 @@ public class ConnController {
     }
 
     @GetMapping("/{userId}/followers")
-    public ResponseEntity<List<UserConnDto>> getFollowers(@PathVariable Long userId) {
+    public ResponseEntity<Long> getFollowers(@PathVariable Long userId) {
         return ResponseEntity.ok(connectionService.getFollowers(userId));
     }
 
@@ -51,11 +50,16 @@ public class ConnController {
         return ResponseEntity.ok(message);
     }
 
-    @GetMapping("/connections/ifFriends")
-    public ResponseEntity<String> checkIfFriends(@RequestParam Long userId1, @RequestParam Long userId2) {
-    boolean areFriends = connectionService.ifFriends(userId1, userId2);
-    return ResponseEntity.ok(areFriends ? "Friends" : "Not Friends");
-}
+    @GetMapping("/{userId1}/ifFriends/{userId2}")
+    public ResponseEntity<Boolean> checkIfFriends(@PathVariable Long userId1, @PathVariable Long userId2) {
+        boolean areFriends = connectionService.ifFriends(userId1, userId2);
+        return ResponseEntity.ok(areFriends);
+    }
 
+    @GetMapping("/{userId}/ifFollows/{userId2}")
+    public ResponseEntity<Boolean> checkIfFollowing(@PathVariable Long userId, @PathVariable Long userId2) {
+        boolean doesFollow = connectionService.ifFollows(userId, userId2);
+        return ResponseEntity.ok(doesFollow);
+    }
 
 }

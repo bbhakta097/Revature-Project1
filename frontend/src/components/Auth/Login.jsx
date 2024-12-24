@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
 import { useNavigate } from 'react-router-dom';
+import '../../index.css';
 
 const Login = () => {
     const [formData, setFormData] = useState({ username: '', password: '' });
@@ -18,9 +19,9 @@ const Login = () => {
             const response = await api.post('/auth/login', formData);
             //localStorage.removeItem('jwt');
             //localStorage.removeItem('userId');
-            const {token, userId} = response.data;
+            const { token, userId } = response.data;
             //localStorage.setItem('jwt', token); 
-            sessionStorage.setItem('userId', userId); 
+            sessionStorage.setItem('userId', userId);
             console.log(sessionStorage.getItem('userId')); // Should print the userId
             alert('Login successful!');
             navigate('/feed'); // Redirect to feed page
@@ -31,7 +32,7 @@ const Login = () => {
     };
 
     return (
-        <div>
+        <div className='login-container'>
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <input

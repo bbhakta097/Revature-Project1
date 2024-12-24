@@ -23,15 +23,13 @@ class ReactionRepositoryTest {
 
     @Test
     void testCountByPostId() {
-        // Arrange
+
         User user = userRepository.save(new User("username", "email@example.com", "password"));
         Post post = postRepository.save(new Post("Test Post", user));
         reactionRepository.save(new Reaction(post, user, Reaction.Type.LIKE));
 
-        // Act
         long likeCount = reactionRepository.countByPostId(post.getId());
 
-        // Assert
         assertThat(likeCount).isEqualTo(1);
     }
 }

@@ -51,7 +51,6 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

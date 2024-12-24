@@ -61,11 +61,6 @@ export const addComment = async (content, userId, postId) => {
     }
 };
 
-export const addReaction = (postId, userId) =>
-    api.post(`/reactions/${postId}/like?userId=${userId}`);
-
-export const getReactionsForPost = (postId) =>
-    api.get(`/reactions/${postId}/likes`).then((res) => res.data);
 
 // Search users
 export const searchUsers = (query) =>
@@ -95,3 +90,61 @@ export const getUserProfile = async (username) => {
     }
 };
 
+export const followUser = async (userId, targetUserId) => {
+    try {
+        const response = await api.post(`/connections/${userId}/follow`, targetUserId);
+        return response.data;
+    } catch (error) {
+        console.error('Error following user:', error);
+        throw error;
+    }
+};
+
+export const unfollowUser = async (userId, targetUserId) => {
+    try {
+        const response = await api.delete(`/connections/${userId}/unfollow`, { data: targetUserId });
+        return response.data;
+    } catch (error) {
+        console.error('Error unfollowing user:', error);
+        throw error;
+    }
+};
+
+export const getFollowers = async (userId) => {
+    try {
+        const response = await api.get(`/connections/${userId}/followers`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching followers:', error);
+        throw error;
+    }
+}
+
+export const ifFollows = async (userId, userId2) => {
+    try {
+        const response = await api.get(`/connections/${userId}/ifFollows/${userId2}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error if follows:', error);
+        throw error;
+    }
+};
+
+export const hasUserLikedPost = async (postId, userId) => {
+    try {
+        const response = await api.get(`/reactions/${userId}/user/${postId}`);
+        return response.data; // This will be true or false
+    } catch (error) {
+        console.error("Error checking user reaction:", error);
+        throw error;
+    }
+};
+
+export const addLike = (postId, userId) =>
+    api.post(`/reactions/${postId}/like/${userId}`);
+
+export const unLike = (postId, userId) =>
+    api.delete(`/reactions/${postId}/unlike/${userId}`);
+
+export const getReactionsForPost = (postId) =>
+    api.get(`/reactions/${postId}/likes`).then((res) => res.data);

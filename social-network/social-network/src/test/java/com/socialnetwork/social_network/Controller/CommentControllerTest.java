@@ -11,70 +11,64 @@ import org.junit.jupiter.api.Test;
 
 public class CommentControllerTest {
 
-    private final HttpClient httpClient = HttpClient.newHttpClient();
+        private final HttpClient httpClient = HttpClient.newHttpClient();
 
-    @Test
-    public void addComment_ValidContent_ShouldReturn200() throws IOException, InterruptedException {
-        // Arrange
-        String content = "This is a valid comment";
-        Long postId = 1L;
-        Long userId = 2L;
+        @Test
+        public void addComment_ValidContent_ShouldReturn200() throws IOException, InterruptedException {
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/comments/" + postId + "?userId=" + userId))
-                .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(content))
-                .build();
+                String content = "This is a valid comment";
+                Long postId = 1L;
+                Long userId = 2L;
 
-        // Act
-        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+                HttpRequest request = HttpRequest.newBuilder()
+                                .uri(URI.create("http://localhost:8080/comments/" + postId + "?userId=" + userId))
+                                .header("Content-Type", "application/json")
+                                .POST(HttpRequest.BodyPublishers.ofString(content))
+                                .build();
 
-        // Assert
-        assertEquals(200, response.statusCode(), 
-                "Expected status 200 for valid comment, but got: " + response.statusCode());
-    }
+                HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-    @Test
-    public void addComment_EmptyContent_ShouldReturn400() throws IOException, InterruptedException {
-        // Arrange
-        String emptyContent = ""; // Empty comment
-        Long postId = 1L;
-        Long userId = 2L;
+                assertEquals(200, response.statusCode(),
+                                "Expected status 200 for valid comment, but got: " + response.statusCode());
+        }
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/comments/" + postId + "?userId=" + userId))
-                .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(emptyContent))
-                .build();
+        @Test
+        public void addComment_EmptyContent_ShouldReturn400() throws IOException, InterruptedException {
 
-        // Act
-        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+                String emptyContent = "";
+                Long postId = 1L;
+                Long userId = 2L;
 
-        // Assert
-        assertEquals(400, response.statusCode(), 
-                "Expected status 400 for empty comment, but got: " + response.statusCode());
-        System.out.println("Response for empty content: " + response.body());
-    }
+                HttpRequest request = HttpRequest.newBuilder()
+                                .uri(URI.create("http://localhost:8080/comments/" + postId + "?userId=" + userId))
+                                .header("Content-Type", "application/json")
+                                .POST(HttpRequest.BodyPublishers.ofString(emptyContent))
+                                .build();
 
-    @Test
-    public void addComment_NullContent_ShouldReturn400() throws IOException, InterruptedException {
-        // Arrange
-        String nullContent = ""; // Simulating null as a string (not sending content in body)
-        Long postId = 1L;
-        Long userId = 2L;
+                HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/comments/" + postId + "?userId=" + userId))
-                .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(nullContent))
-                .build();
+                assertEquals(400, response.statusCode(),
+                                "Expected status 400 for empty comment, but got: " + response.statusCode());
+                System.out.println("Response for empty content: " + response.body());
+        }
 
-        // Act
-        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        @Test
+        public void addComment_NullContent_ShouldReturn400() throws IOException, InterruptedException {
 
-        // Assert
-        assertEquals(400, response.statusCode(), 
-                "Expected status 400 for null content, but got: " + response.statusCode());
-        System.out.println("Response for null content: " + response.body());
-    }
+                String nullContent = "";
+                Long postId = 1L;
+                Long userId = 2L;
+
+                HttpRequest request = HttpRequest.newBuilder()
+                                .uri(URI.create("http://localhost:8080/comments/" + postId + "?userId=" + userId))
+                                .header("Content-Type", "application/json")
+                                .POST(HttpRequest.BodyPublishers.ofString(nullContent))
+                                .build();
+
+                HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+                assertEquals(400, response.statusCode(),
+                                "Expected status 400 for null content, but got: " + response.statusCode());
+                System.out.println("Response for null content: " + response.body());
+        }
 }

@@ -28,7 +28,8 @@ public class PostController {
     private final PostRepository postRepository;
     private final ReactionRepository reactionRepository;
 
-    public PostController(PostService postService, PostRepository postRepository, ReactionRepository reactionRepository) {
+    public PostController(PostService postService, PostRepository postRepository,
+            ReactionRepository reactionRepository) {
         this.postService = postService;
         this.postRepository = postRepository;
         this.reactionRepository = reactionRepository;
@@ -51,11 +52,14 @@ public class PostController {
                 .map(post -> {
                     User user = post.getUser();
                     UserConnDto userDto = new UserConnDto(user.getId(), user.getUsername());
-                    //long likeCount = reactionRepository.countByPostIdAndReactionType(post.getId(), "LIKE");
-                    System.out.println("Post ID: " + post.getId() + ", Likes: " + reactionRepository.countByPostId(post.getId()));
-                    return new PostSearchDto(post.getId(), post.getContent(), post.getCreatedAt(), userDto, reactionRepository.countByPostId(post.getId()));
+                    // long likeCount =
+                    // reactionRepository.countByPostIdAndReactionType(post.getId(), "LIKE");
+                    System.out.println(
+                            "Post ID: " + post.getId() + ", Likes: " + reactionRepository.countByPostId(post.getId()));
+                    return new PostSearchDto(post.getId(), post.getContent(), post.getCreatedAt(), userDto,
+                            reactionRepository.countByPostId(post.getId()));
                 })
-              .collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 
 }

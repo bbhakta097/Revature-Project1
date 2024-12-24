@@ -9,7 +9,6 @@ public class UserSearchDto {
         this.username = username;
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }

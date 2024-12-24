@@ -11,89 +11,77 @@ import org.junit.jupiter.api.Test;
 
 public class SearchControllerTest {
 
-    private final HttpClient httpClient = HttpClient.newHttpClient();
+        private final HttpClient httpClient = HttpClient.newHttpClient();
 
-    // Test for searching users with a valid query
-    @Test
-    public void searchUsers_ValidQuery_ShouldReturn200() throws IOException, InterruptedException {
-        // Arrange
-        String query = "phatzzo";
+        @Test
+        public void searchUsers_ValidQuery_ShouldReturn200() throws IOException, InterruptedException {
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/search/users?query=" + query))
-                .header("Accept", "application/json")
-                .GET()
-                .build();
+                String query = "phatzzo";
 
-        // Act
-        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+                HttpRequest request = HttpRequest.newBuilder()
+                                .uri(URI.create("http://localhost:8080/search/users?query=" + query))
+                                .header("Accept", "application/json")
+                                .GET()
+                                .build();
 
-        // Assert
-        assertEquals(200, response.statusCode(),
-                "Expected status 200 for valid user search, but got: " + response.statusCode());
-        System.out.println("Response for user search: " + response.body());
-    }
+                HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-    // Test for searching users with an empty query
-    @Test
-    public void searchUsers_EmptyQuery_ShouldReturn400() throws IOException, InterruptedException {
-        // Arrange
-        String query = "";
+                assertEquals(200, response.statusCode(),
+                                "Expected status 200 for valid user search, but got: " + response.statusCode());
+                System.out.println("Response for user search: " + response.body());
+        }
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/search/users?query=" + query))
-                .header("Accept", "application/json")
-                .GET()
-                .build();
+        @Test
+        public void searchUsers_EmptyQuery_ShouldReturn400() throws IOException, InterruptedException {
 
-        // Act
-        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+                String query = "";
 
-        // Assert
-        assertEquals(400, response.statusCode(),
-                "Expected status 400 for empty user search query, but got: " + response.statusCode());
-        System.out.println("Response for empty user query: " + response.body());
-    }
+                HttpRequest request = HttpRequest.newBuilder()
+                                .uri(URI.create("http://localhost:8080/search/users?query=" + query))
+                                .header("Accept", "application/json")
+                                .GET()
+                                .build();
 
-    // Test for searching posts with a valid query
-    @Test
-    public void searchPosts_ValidQuery_ShouldReturn200() throws IOException, InterruptedException {
-        // Arrange
-        String query = "test";
+                HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/search/posts?query=" + query))
-                .header("Accept", "application/json")
-                .GET()
-                .build();
+                assertEquals(400, response.statusCode(),
+                                "Expected status 400 for empty user search query, but got: " + response.statusCode());
+                System.out.println("Response for empty user query: " + response.body());
+        }
 
-        // Act
-        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        @Test
+        public void searchPosts_ValidQuery_ShouldReturn200() throws IOException, InterruptedException {
 
-        // Assert
-        assertEquals(200, response.statusCode(),
-                "Expected status 200 for valid post search, but got: " + response.statusCode());
-        System.out.println("Response for post search: " + response.body());
-    }
+                String query = "test";
 
-    // Test for searching posts with an empty query
-    @Test
-    public void searchPosts_EmptyQuery_ShouldReturn400() throws IOException, InterruptedException {
-        // Arrange
-        String query = "";
+                HttpRequest request = HttpRequest.newBuilder()
+                                .uri(URI.create("http://localhost:8080/search/posts?query=" + query))
+                                .header("Accept", "application/json")
+                                .GET()
+                                .build();
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/search/posts?query=" + query))
-                .header("Accept", "application/json")
-                .GET()
-                .build();
+                HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-        // Act
-        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+                assertEquals(200, response.statusCode(),
+                                "Expected status 200 for valid post search, but got: " + response.statusCode());
+                System.out.println("Response for post search: " + response.body());
+        }
 
-        // Assert
-        assertEquals(400, response.statusCode(),
-                "Expected status 400 for empty post search query, but got: " + response.statusCode());
-        System.out.println("Response for empty post query: " + response.body());
-    }
+        @Test
+        public void searchPosts_EmptyQuery_ShouldReturn400() throws IOException, InterruptedException {
+
+                String query = "";
+
+                HttpRequest request = HttpRequest.newBuilder()
+                                .uri(URI.create("http://localhost:8080/search/posts?query=" + query))
+                                .header("Accept", "application/json")
+                                .GET()
+                                .build();
+
+                HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+                assertEquals(400, response.statusCode(),
+                                "Expected status 400 for empty post search query, but got: " + response.statusCode());
+                System.out.println("Response for empty post query: " + response.body());
+        }
 }

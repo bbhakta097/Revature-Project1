@@ -21,15 +21,13 @@ class ConnRepoTest {
 
     @Test
     void testFindAllByUserId() {
-        // Arrange
+
         User user1 = userRepository.save(new User("user1", "email1@example.com", "password"));
         User user2 = userRepository.save(new User("user2", "email2@example.com", "password"));
         connRepo.save(new Connection(user1.getId(), user2.getId(), Connection.Status.FOLLOWING));
 
-        // Act
         List<Connection> connections = connRepo.findAllByUserId(user1.getId());
 
-        // Assert
         assertThat(connections).hasSize(1);
         assertThat(connections.get(0).getConnectedUserId()).isEqualTo(user2.getId());
     }

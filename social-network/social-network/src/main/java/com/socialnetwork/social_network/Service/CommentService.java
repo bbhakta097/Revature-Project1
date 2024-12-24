@@ -22,7 +22,8 @@ public class CommentService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
 
-    public CommentService(CommentRepository commentRepository, PostRepository postRepository, UserRepository userRepository) {
+    public CommentService(CommentRepository commentRepository, PostRepository postRepository,
+            UserRepository userRepository) {
         this.commentRepository = commentRepository;
         this.postRepository = postRepository;
         this.userRepository = userRepository;
@@ -64,8 +65,7 @@ public class CommentService {
                             comment.getContent(),
                             comment.getCreatedAt(),
                             commenterDto,
-                            postDto
-                    );
+                            postDto);
                 })
                 .collect(Collectors.toList());
     }

@@ -21,7 +21,7 @@ public class PostControllerTest {
 
     @Test
     public void createPost_ShouldReturn200() throws IOException, InterruptedException {
-        // Arrange
+
         String json = "\"This is a test post\"";
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/posts/1"))
@@ -29,10 +29,8 @@ public class PostControllerTest {
                 .POST(HttpRequest.BodyPublishers.ofString(json))
                 .build();
 
-        // Act
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-        // Assert
         Assertions.assertEquals(200, response.statusCode(),
                 "Expected status 200, got: " + response.statusCode() + ". Response Body: " + response.body());
         System.out.println("Response: " + response.body());
@@ -40,17 +38,15 @@ public class PostControllerTest {
 
     @Test
     public void getPostsByUser_ShouldReturn200() throws IOException, InterruptedException {
-        // Arrange
+
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/posts/1"))
                 .header("Content-Type", "application/json")
                 .GET()
                 .build();
 
-        // Act
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-        // Assert
         Assertions.assertEquals(200, response.statusCode(),
                 "Expected status 200, got: " + response.statusCode() + ". Response Body: " + response.body());
         System.out.println("Response: " + response.body());

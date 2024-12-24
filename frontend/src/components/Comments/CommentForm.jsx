@@ -15,8 +15,8 @@ const CommentForm = ({ postId, userId, onCommentAdded }) => {
 
         try {
             const response = addComment(content, userId, postId);
-            onCommentAdded(response); // Notify parent to refresh comments
-            setContent(""); // Clear the textarea
+            onCommentAdded(response);
+            setContent("");
             nav(0);
         } catch (error) {
             console.error("Failed to add comment:", error);

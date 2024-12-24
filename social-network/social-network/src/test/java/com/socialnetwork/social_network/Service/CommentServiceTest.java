@@ -81,8 +81,6 @@ class CommentServiceTest {
         assertEquals("Post not found", exception.getMessage());
     }
 
-
-
     @Test
     void getCommentsByPost_PostNotFound() {
         when(postRepository.findById(2L)).thenReturn(Optional.empty());

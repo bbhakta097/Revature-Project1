@@ -32,7 +32,7 @@ public class AuthController {
 
     private final AuthService authService;
     private final UserRepository userRepository;
-    //private final JwtService jwtService;
+    // private final JwtService jwtService;
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterRequest request) {
@@ -99,4 +99,4 @@ public class AuthController {
 
     }
 
-    }
+}

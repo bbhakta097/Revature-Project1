@@ -7,7 +7,7 @@ public class CommentDto {
     private Long id;
     private String content;
     private LocalDateTime createdAt;
-    private PostDto postOwner;  // User who created the post
+    private PostDto postOwner; // User who created the post
     private UserConnDto commenter; // User who made the comment
 
     public CommentDto(Long id, String content, LocalDateTime createdAt, UserConnDto commenter, PostDto postOwner) {
@@ -18,7 +18,6 @@ public class CommentDto {
         this.commenter = commenter;
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }

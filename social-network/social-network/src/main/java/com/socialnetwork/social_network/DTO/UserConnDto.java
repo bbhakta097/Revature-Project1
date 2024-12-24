@@ -9,7 +9,6 @@ public class UserConnDto {
         this.username = username;
     }
 
-    // Getters and setters
     public Long getUserId() {
         return userId;
     }

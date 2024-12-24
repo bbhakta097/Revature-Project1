@@ -38,7 +38,7 @@ public class Reaction {
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    public Reaction(Post post, User user, ReactionType reactionType){
+    public Reaction(Post post, User user, ReactionType reactionType) {
         this.post = post;
         this.user = user;
         this.reactionType = reactionType;
@@ -48,7 +48,6 @@ public class Reaction {
 
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -89,4 +88,3 @@ public class Reaction {
         this.createdAt = createdAt;
     }
 }
-

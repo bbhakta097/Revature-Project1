@@ -17,5 +17,6 @@ public interface ConnRepo extends JpaRepository<Connection, Long> {
 
     boolean existsByUserIdAndConnectedUserId(Long userId, Long connectedUserId);
 
+    Long countAllByConnectedUserId(Long userId);
 
 }

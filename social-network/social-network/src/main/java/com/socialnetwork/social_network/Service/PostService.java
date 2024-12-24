@@ -20,7 +20,8 @@ public class PostService {
     private final UserRepository userRepository;
     private final ReactionRepository reactionRepository;
 
-    public PostService(PostRepository postRepository, UserRepository userRepository, ReactionRepository reactionRepository) {
+    public PostService(PostRepository postRepository, UserRepository userRepository,
+            ReactionRepository reactionRepository) {
         this.postRepository = postRepository;
         this.userRepository = userRepository;
         this.reactionRepository = reactionRepository;
@@ -39,15 +40,15 @@ public class PostService {
     }
 
     public List<PostSearchDto> getPostsByUser(Long userId) {
-        // Verify the user exists
+
         userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Fetch posts and map to DTOs
         return postRepository.findAllByUserId(userId).stream()
                 .map(post -> {
                     User user = post.getUser();
                     UserConnDto userDto = new UserConnDto(user.getId(), user.getUsername());
-                    return new PostSearchDto(post.getId(), post.getContent(), post.getCreatedAt(), userDto, reactionRepository.countByPostId(post.getId()));
+                    return new PostSearchDto(post.getId(), post.getContent(), post.getCreatedAt(), userDto,
+                            reactionRepository.countByPostId(post.getId()));
                 })
                 .collect(Collectors.toList());
     }

@@ -10,7 +10,6 @@ public class UserProfileUpdateDto {
 
     }
 
-    // Getters and setters
     public String getUsername() {
         return username;
     }

@@ -8,7 +8,6 @@ public class PostDto {
     private String content;
     private LocalDateTime createdAt;
     private UserConnDto user;
-    
 
     public PostDto(Long id, String content, LocalDateTime createdAt, UserConnDto user) {
         this.id = id;
@@ -17,7 +16,6 @@ public class PostDto {
         this.user = user;
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }

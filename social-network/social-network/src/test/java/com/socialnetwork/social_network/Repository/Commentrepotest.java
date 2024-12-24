@@ -25,15 +25,13 @@ class CommentRepositoryTest {
 
     @Test
     void testFindAllByPostId() {
-        // Arrange
+
         User user = userRepository.save(new User("username", "email@example.com", "password"));
         Post post = postRepository.save(new Post("Test post content", user));
         commentRepository.save(new Comment("First comment", user, post));
 
-        // Act
         List<Comment> comments = commentRepository.findAllByPostId(post.getId());
 
-        // Assert
         assertThat(comments).hasSize(1);
         assertThat(comments.get(0).getContent()).isEqualTo("First comment");
     }

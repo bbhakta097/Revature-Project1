@@ -44,9 +44,9 @@ public class JwtFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
-        
+
         jwt = authHeader.substring(7);
-        
+
         System.out.println("JWT Token in JwtTokenValidator: " + jwt);
 
         username = jwtService.extractUsername(jwt);
@@ -61,7 +61,7 @@ public class JwtFilter extends OncePerRequestFilter {
                         null, userDetails.getAuthorities());
 
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                
+
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }
@@ -69,7 +69,5 @@ public class JwtFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
 
     }
-
-    
 
 }

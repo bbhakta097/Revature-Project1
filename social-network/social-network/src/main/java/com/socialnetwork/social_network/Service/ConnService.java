@@ -45,16 +45,10 @@ public class ConnService {
      * }
      */
 
-    public List<UserConnDto> getFollowers(Long userId) {
-        List<Connection> connections = connectionRepository.findAllByConnectedUserId(userId);
+    public Long getFollowers(Long userId) {
+        Long connections = connectionRepository.countAllByConnectedUserId(userId);
 
-        return connections.stream()
-                .map(connection -> {
-                    User user = userRepository.findById(connection.getUserId())
-                            .orElseThrow(() -> new RuntimeException("User not found"));
-                    return new UserConnDto(user.getId(), user.getUsername());
-                })
-                .collect(Collectors.toList());
+        return connections;
     }
 
     public List<UserConnDto> getFollowing(Long userId) {
@@ -75,7 +69,6 @@ public class ConnService {
 
         connectionRepository.delete(connection);
 
-        // Check if the reverse connection exists
         Optional<Connection> reverseConnection = connectionRepository.findByUserIdAndConnectedUserId(targetUserId,
                 userId);
 
@@ -88,11 +81,10 @@ public class ConnService {
     }
 
     public String followUser(Long userId, Long targetUserId) {
-        // Ensure both users exist
+
         userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
         userRepository.findById(targetUserId).orElseThrow(() -> new RuntimeException("Target user not found"));
 
-        // Check if a connection already exists
         Optional<Connection> existingConnection = connectionRepository.findByUserIdAndConnectedUserId(userId,
                 targetUserId);
 
@@ -100,26 +92,25 @@ public class ConnService {
             return "You are already following this user.";
         }
 
-        // Create the following connection
         Connection connection = new Connection();
         connection.setUserId(userId);
         connection.setConnectedUserId(targetUserId);
         connection.setStatus(Connection.Status.FOLLOWING);
         connectionRepository.save(connection);
 
-        // Check if the target user already follows the current user
         Optional<Connection> reverseConnection = connectionRepository.findByUserIdAndConnectedUserId(targetUserId,
                 userId);
-
-        if (reverseConnection.isPresent()) {
-            // Update both connections to FRIENDS
-            connection.setStatus(Connection.Status.FRIENDS);
-            reverseConnection.get().setStatus(Connection.Status.FRIENDS);
-            connectionRepository.save(connection);
-            connectionRepository.save(reverseConnection.get());
-
-            return "You are now friends with the user.";
-        }
+        /*
+         * if (reverseConnection.isPresent()) {
+         * // Update both connections to FRIENDS
+         * connection.setStatus(Connection.Status.FRIENDS);
+         * reverseConnection.get().setStatus(Connection.Status.FRIENDS);
+         * connectionRepository.save(connection);
+         * connectionRepository.save(reverseConnection.get());
+         * 
+         * return "You are now friends with the user.";
+         * }
+         */
 
         return "You are now following the user.";
     }
@@ -133,6 +124,11 @@ public class ConnService {
 
         // Return true if both follow each other
         return user1FollowsUser2 && user2FollowsUser1;
+    }
+
+    public boolean ifFollows(Long userId1, Long userId2) {
+        boolean user1FollowsUser2 = connectionRepository.existsByUserIdAndConnectedUserId(userId1, userId2);
+        return user1FollowsUser2;
     }
 
 }

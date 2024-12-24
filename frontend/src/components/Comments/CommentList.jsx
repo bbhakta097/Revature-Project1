@@ -9,11 +9,7 @@ const CommentList = ({ comments, onDeleteComment }) => {
         <ul>
             {comments.map((comment) => (
                 <li key={comment.id}>
-                    <p>{comment.content}</p>
-                    <small>By: {comment.commenter?.username || "Unknown User"}</small>
-                    <br />
-                    <small>On: {new Date(comment.createdAt).toLocaleString()}</small>
-                    <button
+                    <p>{comment.content} <button
                         style={{
                             backgroundColor: 'red',
                             color: 'white',
@@ -22,7 +18,10 @@ const CommentList = ({ comments, onDeleteComment }) => {
                             cursor: 'pointer',
                             alignItems: 'flex-end'
                         }}
-                        onClick={() => onDeleteComment(comment.id)}> X </button>
+                        onClick={() => onDeleteComment(comment.id)}> X </button></p>
+                    <small>By: {comment.commenter?.username || "Unknown User"}</small>
+                    <small>On: {new Date(comment.createdAt).toLocaleString()}</small>
+
                 </li>
             ))}
         </ul>

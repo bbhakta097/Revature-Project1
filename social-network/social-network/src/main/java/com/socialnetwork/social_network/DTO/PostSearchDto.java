@@ -20,7 +20,6 @@ public class PostSearchDto {
         this.likes = likes;
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }

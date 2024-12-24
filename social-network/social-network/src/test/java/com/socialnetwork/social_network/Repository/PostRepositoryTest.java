@@ -21,15 +21,13 @@ class PostRepositoryTest {
 
     @Test
     void testFindAllByUserId() {
-        // Arrange
+
         User user = userRepository.save(new User("user1", "email@example.com", "password"));
         postRepository.save(new Post("Test post 1", user));
         postRepository.save(new Post("Test post 2", user));
 
-        // Act
         List<Post> posts = postRepository.findAllByUserId(user.getId());
 
-        // Assert
         assertThat(posts).hasSize(2);
         assertThat(posts.get(0).getContent()).isEqualTo("Test post 1");
     }
